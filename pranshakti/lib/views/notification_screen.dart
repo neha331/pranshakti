@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pranshakti/view/congratulations_screen.dart';
+import 'package:get/get.dart';
+import 'package:pranshakti/views/congratulations_screen.dart';
 import 'package:pranshakti/widgets/homepage/custom_bottom_navigation_bar.dart';
+
+import '../routes/routes.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -23,7 +26,9 @@ class NotificationScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.more_vert, color: Colors.black),
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(Routes.congratulationsScreen);
+            },
           ),
         ],
       ),
@@ -64,16 +69,7 @@ class NotificationScreen extends StatelessWidget {
                 ],
               ),
             ),
-            ElevatedButton(
-                  child: const Text('Go to New Screen'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const CongratulationsScreen()),
-                    );
-                  }
-              )
+            
           ],
         ),
       ),

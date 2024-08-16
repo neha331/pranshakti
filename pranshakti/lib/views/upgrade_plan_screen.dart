@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pranshakti/view/meal_schedule_page.dart';
+import 'package:pranshakti/views/meal_schedule_page.dart';
 import 'package:pranshakti/widgets/homepage/custom_bottom_navigation_bar.dart';
 
 class UpgradePlansScreen extends StatelessWidget {
@@ -116,16 +116,7 @@ class UpgradePlansScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              ElevatedButton(
-                   child: const Text('Go to New Screen'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MealSchedulePage()),
-                      );
-                    }
-                ), 
+              
             ],
           ),
         ),

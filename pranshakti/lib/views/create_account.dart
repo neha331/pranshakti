@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pranshakti/view/phone_verification.dart';
+import 'package:pranshakti/views/email_otp_verification.dart';
 import 'package:pranshakti/widgets/Or_divider.dart';
-import 'package:pranshakti/widgets/UserInputTextFormField.dart';
 import 'package:pranshakti/widgets/custom_button.dart';
 import 'package:pranshakti/widgets/social_media_button.dart';
+import 'package:pranshakti/widgets/UserInputTextFormField.dart';
 
-class ConfirmPhoneNumber extends StatelessWidget {
-  ConfirmPhoneNumber({super.key});
-  final TextEditingController _addPhoneNumberTextEditingController =
+import '../routes/routes.dart';
+
+class CreateAccount extends StatelessWidget {
+ CreateAccount({super.key});
+  final TextEditingController _userNameTextEditingController =
       TextEditingController();
+
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final padding = mediaQuery.viewInsets.bottom + mediaQuery.size.height * 0.05;
+    final padding =
+        mediaQuery.viewInsets.bottom + mediaQuery.size.height * 0.05;
 
     return Scaffold(
       body: Padding(
@@ -33,7 +38,7 @@ class ConfirmPhoneNumber extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 const Text(
-                  'Add Phone Number',
+                  'Create an account',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w600,
@@ -46,35 +51,32 @@ class ConfirmPhoneNumber extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       UserInputTextFormField(
-                        controller: _addPhoneNumberTextEditingController,
-                        hintText: 'Enter phone number',
-                        labelText: 'Enter phone number without country code',
+                        controller: _userNameTextEditingController,
+                        //filled:true,
+                        //prefixIcon: Icons.email,
+                        hintText: 'Enter your email',
+                        labelText: 'Enter your email',
                         borderRadius: BorderRadius.circular(20.0),
-                        prefixIcon:Icons.phone_rounded,
+                        // fillColor: const Color.fromRGBO(247, 248, 248, 1),
+                        // color: const Color.fromARGB(255, 239, 239, 239),
                       ),
-                     
                     ],
                   ),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 CustomButton(
                   text: 'Send OTP',
                   height: 59,
-                  width: 248,
+                  width:248,
                   borderRadius: 40.0,
+                  // gradient: const LinearGradient(
+                  //   colors: [
+                  //     Color.fromRGBO(146, 163, 253, 1),
+                  //     Color.fromRGBO(157, 206, 255, 1),
+                  //   ],
+                  // ),
                   onPressed: () {
-                    print('Send OTP button pressed');
-                  },
-                ),
-                const SizedBox(height:20),
-                CustomButton(
-                  text: 'skip',
-                  height: 50,
-                  width: 123,
-                  borderRadius: 35.0,
-                  color: Color.fromARGB(255, 58, 14, 139),
-                  onPressed: () {
-                    print('Send OTP button pressed');
+                    Get.toNamed(Routes.emailOtpVerification);
                   },
                 ),
                 const SizedBox(height: 80),
@@ -84,15 +86,6 @@ class ConfirmPhoneNumber extends StatelessWidget {
                 const SizedBox(height: 30),
                 const Text('Already have an account? Login'),
                 const SizedBox(height: 10),
-                ElevatedButton(
-                  child: Text('Go to New Screen'),
-                  onPressed: () {
-                    Navigator.push(
-                   context,
-                   MaterialPageRoute(builder: (context) =>PhoneVerification()),
-                 ); 
-                 }
-                )
               ],
             ),
           ),

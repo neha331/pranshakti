@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pranshakti/view/activity_tracker.dart';
+import 'package:pranshakti/views/activity_tracker.dart';
 import 'package:pranshakti/widgets/homepage/custom_bottom_navigation_bar.dart';
 import 'package:pranshakti/widgets/workout_tracker/GridViewWidget.dart';
 
@@ -90,15 +90,7 @@ class WorkoutTracker extends StatelessWidget {
                            },
                           ),
               ),
-           ElevatedButton(
-                  child: Text('Go to New Screen'),
-                  onPressed: () {
-                    Navigator.push(
-                   context,
-                   MaterialPageRoute(builder: (context) => const ActivityTrackerPage()),
-                 ); 
-                 }
-                )
+           
           ]
           ),
         ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pranshakti/view/Complete_profile2.dart';
+import 'package:pranshakti/routes/routes.dart';
+import 'package:pranshakti/views/Complete_profile2.dart';
 import 'package:pranshakti/widgets/Or_divider.dart';
 import 'package:pranshakti/widgets/UserInputTextFormField.dart';
 import 'package:pranshakti/widgets/custom_button.dart';
@@ -105,18 +107,10 @@ class CompleteProfileOne extends StatelessWidget {
                   width: 315,
                   borderRadius: 40.0,
                   onPressed: () {
-                    print('Send OTP button pressed');
+                    Get.toNamed(Routes.completeProfileTwo);
                   },
                 ),
-                ElevatedButton(
-                  child: Text('Go to New Screen'),
-                  onPressed: () {
-                    Navigator.push(
-                   context,
-                   MaterialPageRoute(builder: (context) => CompleteProfileTwo()),
-                 ); 
-                 }
-                )
+                
               ] 
             ),
           ),

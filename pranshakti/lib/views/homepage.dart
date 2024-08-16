@@ -2,8 +2,9 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pranshakti/view/workout_tracker.dart';
+import 'package:pranshakti/views/workout_tracker.dart';
 import 'package:pranshakti/widgets/Or_divider.dart';
 import 'package:pranshakti/widgets/UserInputTextFormField.dart';
 import 'package:pranshakti/widgets/custom_button.dart';
@@ -16,6 +17,8 @@ import 'package:pranshakti/widgets/social_media_button.dart';
 
 import 'package:flutter/material.dart';
 import 'package:pranshakti/widgets/workout_tracker/line_chart.dart';
+
+import '../routes/routes.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -33,9 +36,20 @@ class HomePage extends StatelessWidget {
                 Column(crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
               // Header
-              Text(
-                'Welcome Back,',
-                style: TextStyle(fontSize: 18, color: Colors.grey),
+              Row(
+                children: [
+                  Text(
+                    'Welcome Back,',
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.camera_alt, color: Colors.grey),
+                    onPressed: () {
+                     Get.toNamed(Routes.notificationScreen);
+                   },
+
+                  )
+                ],
               ),
               SizedBox(height: 4),
               Text(
@@ -227,15 +241,7 @@ class HomePage extends StatelessWidget {
                 //   ),
                 // ),
                 
-                ElevatedButton(
-                  child: Text('Go to New Screen'),
-                  onPressed: () {
-                    Navigator.push(
-                   context,
-                   MaterialPageRoute(builder: (context) =>WorkoutTracker()),
-                 ); 
-                 }
-                )
+                
             ]
             ),
           ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pranshakti/view/notification_screen.dart';
+import 'package:pranshakti/views/notification_screen.dart';
 import 'package:pranshakti/widgets/homepage/custom_bottom_navigation_bar.dart';
 
 class MealSchedulePage extends StatelessWidget {
@@ -96,16 +96,7 @@ class MealSchedulePage extends StatelessWidget {
               ],
             ),
           ),
-          ElevatedButton(
-                  child: const Text('Go to New Screen'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const NotificationScreen()),
-                    );
-                  }
-              )
+         
         ],
       ),
       bottomNavigationBar: const CustomBottomNavigationBar()

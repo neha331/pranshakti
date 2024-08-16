@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:pranshakti/routes/routes.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({super.key});
@@ -27,11 +29,15 @@ class CustomBottomNavigationBar extends StatelessWidget {
         children: <Widget>[
           IconButton(
             icon: Icon(Icons.home, color:Color.fromRGBO(197, 139, 242, 1)),
-            onPressed: () {},
+            onPressed: () {
+               Get.toNamed(Routes.homePage);
+            },
           ),
           IconButton(
             icon: Icon(Icons.show_chart, color: Colors.grey),
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(Routes.workoutTracker);
+            },
           ),
           Container(
             width: 60,
@@ -50,16 +56,22 @@ class CustomBottomNavigationBar extends StatelessWidget {
             ),
             child: IconButton(
               icon: Icon(Icons.search, color: Colors.white),
-              onPressed: () {},
+              onPressed: () {
+                 
+              },
             ),
           ),
           IconButton(
             icon: Icon(Icons.camera_alt, color: Colors.grey),
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(Routes.activityTrackerPage);
+            },
           ),
           IconButton(
             icon: Icon(Icons.person, color: Colors.grey),
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(Routes.profile);
+            },
           ),
         ],
       ),

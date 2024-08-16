@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pranshakti/view/upgrade_plan_screen.dart';
+import 'package:pranshakti/views/upgrade_plan_screen.dart';
 import 'package:pranshakti/widgets/homepage/custom_bottom_navigation_bar.dart';
 
 class Profile extends StatelessWidget {
@@ -140,16 +140,7 @@ class Profile extends StatelessWidget {
                       _buildListTile('Settings', Icons.settings),
                     ],
                   )),
-              ElevatedButton(
-                  child: const Text('Go to New Screen'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const UpgradePlansScreen()),
-                    );
-                  }
-              )
+              
             ],
           ),
         ),

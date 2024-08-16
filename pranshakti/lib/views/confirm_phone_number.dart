@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pranshakti/view/create_new_password.dart';
+import 'package:pranshakti/routes/routes.dart';
+import 'package:pranshakti/views/phone_verification.dart';
 import 'package:pranshakti/widgets/Or_divider.dart';
 import 'package:pranshakti/widgets/UserInputTextFormField.dart';
 import 'package:pranshakti/widgets/custom_button.dart';
 import 'package:pranshakti/widgets/social_media_button.dart';
 
-class EmailOtpVerification extends StatelessWidget {
-  EmailOtpVerification({super.key});
-  final TextEditingController _userEmailTextEditingController =
-      TextEditingController();
-      final TextEditingController _userEmailOtpTextEditingController =
+class ConfirmPhoneNumber extends StatelessWidget {
+  ConfirmPhoneNumber({super.key});
+  final TextEditingController _addPhoneNumberTextEditingController =
       TextEditingController();
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
@@ -33,76 +33,59 @@ class EmailOtpVerification extends StatelessWidget {
                   height: mediaQuery.size.height * 0.25,
                   width: mediaQuery.size.width * 0.5,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 const Text(
-                  'Create an account',
+                  'Add Phone Number',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 Form(
                   key: _formkey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       UserInputTextFormField(
-                        controller: _userEmailTextEditingController,
-                        hintText: 'Email',
-                        labelText: 'Email',
+                        controller: _addPhoneNumberTextEditingController,
+                        hintText: 'Enter phone number',
+                        labelText: 'Enter phone number without country code',
                         borderRadius: BorderRadius.circular(20.0),
+                        prefixIcon:Icons.phone_rounded,
                       ),
-                      const SizedBox(height: 20),
-                
-                      UserInputTextFormField(
-                        controller: _userEmailOtpTextEditingController,
-                        hintText: 'Enter OTP',
-                        labelText: 'Enter OTP',
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
+                     
                     ],
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: CustomButton(
-                    text: 'Resend OTP',
-                    height: 50,
-                    width: 120,
-                    borderRadius: 40.0,
-                    onPressed: () {
-                      print('Send OTP button pressed');
-                    },
                   ),
                 ),
                 const SizedBox(height: 30),
                 CustomButton(
-                  text: 'Next >>',
-                  height: 60,
-                  width: 315,
+                  text: 'Send OTP',
+                  height: 59,
+                  width: 248,
                   borderRadius: 40.0,
                   onPressed: () {
                     print('Send OTP button pressed');
                   },
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height:20),
+                CustomButton(
+                  text: 'skip',
+                  height: 50,
+                  width: 123,
+                  borderRadius: 35.0,
+                  color: Color.fromARGB(255, 58, 14, 139),
+                  onPressed: () {
+                    Get.toNamed(Routes.phoneVerification);
+                  },
+                ),
+                const SizedBox(height: 80),
                 const OrDivider(),
-                const SizedBox(height: 20),
+                const SizedBox(height: 50),
                 const SocialMediaButtons(),
                 const SizedBox(height: 30),
                 const Text('Already have an account? Login'),
                 const SizedBox(height: 10),
-                ElevatedButton(
-                  child: Text('Go to New Screen'),
-                  onPressed: () {
-                    Navigator.push(
-                   context,
-                   MaterialPageRoute(builder: (context) =>CreateNewPassword()),
-                 ); 
-                 }
-                )
               ],
             ),
           ),

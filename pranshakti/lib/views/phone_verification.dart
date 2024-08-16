@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pranshakti/view/confirm_phone_number.dart';
+import 'package:pranshakti/routes/routes.dart';
+import 'package:pranshakti/views/complete_profile_one.dart';
 import 'package:pranshakti/widgets/Or_divider.dart';
 import 'package:pranshakti/widgets/UserInputTextFormField.dart';
 import 'package:pranshakti/widgets/custom_button.dart';
 import 'package:pranshakti/widgets/social_media_button.dart';
 
-class CreateNewPassword extends StatelessWidget {
-  CreateNewPassword({super.key});
-  final TextEditingController _userPasswordTextEditingController =
+class PhoneVerification extends StatelessWidget {
+  PhoneVerification({super.key});
+  final TextEditingController _verifyPhoneTextEditingController =
       TextEditingController();
-    final TextEditingController _userConfirmPasswordTextEditingController =
-      TextEditingController();   
+  final TextEditingController _EnterPhoneOTPTextEditingController =
+      TextEditingController();    
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override
@@ -33,9 +35,9 @@ class CreateNewPassword extends StatelessWidget {
                   height: mediaQuery.size.height * 0.25,
                   width: mediaQuery.size.width * 0.5,
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 10),
                 const Text(
-                  'Create New Password',
+                  'Verify phone number',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w600,
@@ -48,50 +50,55 @@ class CreateNewPassword extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       UserInputTextFormField(
-                        controller: _userPasswordTextEditingController,
-                        hintText: 'Enter new password',
-                        labelText: 'Enter new password',
+                        controller: _verifyPhoneTextEditingController,
+                        hintText: 'Enter phone number without country code',
+                        labelText: 'Enter phone number without country code',
                         borderRadius: BorderRadius.circular(20.0),
-                        prefixIcon:Icons.lock,
+                        prefixIcon:Icons.phone,
                       ),
-                      SizedBox(height:20),
+                      const SizedBox(height: 30),
+           
                       UserInputTextFormField(
-                        controller: _userConfirmPasswordTextEditingController,
-                        hintText: 'Confirm new password',
-                        labelText:'Confirm new password',
+                        controller: _EnterPhoneOTPTextEditingController,
+                        hintText: 'Enter OTP sent on your phone',
+                        labelText: 'Enter OTP sent on your phone',
                         borderRadius: BorderRadius.circular(20.0),
                         prefixIcon:Icons.lock,
                       ),
-                    
                     ],
                   ),
                 ),
                 const SizedBox(height: 30),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: CustomButton(
+                    text: 'Resend OTP',
+                    height: 50,
+                    width: 120,
+                    borderRadius: 40.0,
+                    onPressed: () {
+                      print('Send OTP button pressed');
+                    },
+                  ),
+                ),
+                const SizedBox(height: 20),
                 CustomButton(
-                  text: 'Next >>',
-                  height: 60,
+                  text: 'Next >',
+                  height: 59,
                   width: 315,
                   borderRadius: 40.0,
                   onPressed: () {
-                    print('Send OTP button pressed');
+                    Get.toNamed(Routes.completeProfileOne);
                   },
                 ),
-                const SizedBox(height: 80),
+                const SizedBox(height: 20),
                 const OrDivider(),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
                 const SocialMediaButtons(),
                 const SizedBox(height: 30),
                 const Text('Already have an account? Login'),
                 const SizedBox(height: 10),
-                ElevatedButton(
-                  child: Text('Go to New Screen'),
-                  onPressed: () {
-                    Navigator.push(
-                   context,
-                   MaterialPageRoute(builder: (context) =>ConfirmPhoneNumber()),
-                 ); 
-                 }
-                )
+                
               ],
             ),
           ),

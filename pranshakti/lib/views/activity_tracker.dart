@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pranshakti/view/profile.dart';
+import 'package:pranshakti/views/profile.dart';
 import 'package:pranshakti/widgets/homepage/custom_bottom_navigation_bar.dart';
 import 'package:pranshakti/widgets/workout_tracker/line_chart.dart';
 
@@ -181,15 +181,7 @@ class ActivityTrackerPage extends StatelessWidget {
                     trailing: Icon(Icons.more_vert),
                   ),
                 ),
-                ElevatedButton(
-                    child: Text('Go to New Screen'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const Profile()),
-                      );
-                    }
-                )
+                
               ],
             ),
           ),

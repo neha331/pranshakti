@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pranshakti/view/homepage.dart';
+import 'package:pranshakti/routes/routes.dart';
+import 'package:pranshakti/views/homepage.dart';
 import 'package:pranshakti/widgets/Or_divider.dart';
 import 'package:pranshakti/widgets/UserInputTextFormField.dart';
 import 'package:pranshakti/widgets/custom_button.dart';
@@ -106,18 +108,10 @@ class CompleteProfileTwo extends StatelessWidget {
                   width:315,
                   borderRadius: 40.0,
                   onPressed: () {
-                
+                    Get.toNamed(Routes.homePage);
                   },
                 ),
-                ElevatedButton(
-                  child: Text('Go to New Screen'),
-                  onPressed: () {
-                    Navigator.push(
-                   context,
-                   MaterialPageRoute(builder: (context) => HomePage()),
-                 ); 
-                 }
-                )
+                
               ] 
             ),
           ),
