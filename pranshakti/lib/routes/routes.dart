@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:get/get.dart';
 import 'package:pranshakti/views/Complete_profile2.dart';
 import 'package:pranshakti/views/activity_tracker.dart';
