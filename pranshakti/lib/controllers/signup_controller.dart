@@ -12,12 +12,6 @@ class SignupController extends GetxController {
   bool checkEmail() {
     return CommonMethods.validateEmail(userNameTextEditingController.text);  
   }
-
-  void updateEmail(String value) {
-    user.update((user) {
-      user?.email = value;
-    });
-  }
 }
 
 
