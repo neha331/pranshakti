@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:pranshakti/views/Complete_profile2.dart';
+import 'package:pranshakti/views/Complete_profile_two.dart';
 import 'package:pranshakti/views/activity_tracker.dart';
 import 'package:pranshakti/views/complete_profile_one.dart';
 import 'package:pranshakti/views/confirm_phone_number.dart';
@@ -80,7 +80,7 @@ class Routes {
     ),
     GetPage(
       name: homePage,
-      page: () => const HomePage(),
+      page: () => const  HomePage(),
       transition: Transition.leftToRight,
     ),
     GetPage(

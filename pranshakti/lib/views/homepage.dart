@@ -21,7 +21,7 @@ import 'package:pranshakti/widgets/workout_tracker/line_chart.dart';
 import '../routes/routes.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +42,9 @@ class HomePage extends StatelessWidget {
                     'Welcome Back,',
                     style: TextStyle(fontSize: 18, color: Colors.grey),
                   ),
+                  Spacer(),
                   IconButton(
-                    icon: Icon(Icons.camera_alt, color: Colors.grey),
+                    icon: Icon(Icons.notifications_none, color: Colors.grey),
                     onPressed: () {
                      Get.toNamed(Routes.notificationScreen);
                    },
@@ -106,6 +107,7 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 16),
 
               Container(
+                padding: EdgeInsets.all(8.0),
                 height: 63,
                 width:348,
                 decoration:BoxDecoration(
@@ -164,6 +166,7 @@ class HomePage extends StatelessWidget {
               ),
               
               Container(
+                padding: EdgeInsets.all(8.0),
                 height:63,
                 width:348,
                 decoration:BoxDecoration(

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pranshakti/routes/routes.dart';
+import 'package:pranshakti/utils/constants.dart';
 import 'package:pranshakti/views/create_new_password.dart';
 import 'package:pranshakti/widgets/Or_divider.dart';
 import 'package:pranshakti/widgets/UserInputTextFormField.dart';
 import 'package:pranshakti/widgets/custom_button.dart';
+import 'package:pranshakti/widgets/custom_text_widget.dart';
 import 'package:pranshakti/widgets/social_media_button.dart';
 
 class EmailOtpVerification extends StatelessWidget {
@@ -36,12 +38,11 @@ class EmailOtpVerification extends StatelessWidget {
                   width: mediaQuery.size.width * 0.5,
                 ),
                 const SizedBox(height: 20),
-                const Text(
-                  'Create an account',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600,
-                  ),
+                
+                const CustomTextWidget(
+                      text:AppStrings.createAccount,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600, 
                 ),
                 const SizedBox(height: 20),
                 Form(
@@ -51,17 +52,17 @@ class EmailOtpVerification extends StatelessWidget {
                     children: [
                       UserInputTextFormField(
                         controller: _userEmailTextEditingController,
-                        hintText: 'Email',
-                        labelText: 'Email',
+                        labelText: AppStrings.email,
                         borderRadius: BorderRadius.circular(20.0),
+                        prefixIcon: Icons.email_outlined,
                       ),
                       const SizedBox(height: 20),
                 
                       UserInputTextFormField(
                         controller: _userEmailOtpTextEditingController,
-                        hintText: 'Enter OTP',
-                        labelText: 'Enter OTP',
+                        labelText: AppStrings.enterEmailOtp,
                         borderRadius: BorderRadius.circular(20.0),
+                        prefixIcon: Icons.lock_outline,
                       ),
                     ],
                   ),
@@ -70,7 +71,7 @@ class EmailOtpVerification extends StatelessWidget {
                 Align(
                   alignment: Alignment.topRight,
                   child: CustomButton(
-                    text: 'Resend OTP',
+                    text: AppStrings.reSendOtp,
                     height: 50,
                     width: 120,
                     borderRadius: 40.0,
@@ -81,7 +82,7 @@ class EmailOtpVerification extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 CustomButton(
-                  text: 'Next >>',
+                  text: AppStrings.next,
                   height: 60,
                   width: 315,
                   borderRadius: 40.0,
@@ -94,9 +95,23 @@ class EmailOtpVerification extends StatelessWidget {
                 const SizedBox(height: 20),
                 const SocialMediaButtons(),
                 const SizedBox(height: 30),
-                const Text('Already have an account? Login'),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomTextWidget(
+                      text:AppStrings.alreadyAccount,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    CustomTextWidget(
+                      text:AppStrings.login,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500, 
+                      color: Constants.colorPurple,
+                    ),
+                  ],
+                ),                              
                 const SizedBox(height: 10),
-                
               ],
             ),
           ),

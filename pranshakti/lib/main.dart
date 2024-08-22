@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:pranshakti/routes/routes.dart';
+import 'package:pranshakti/views/complete_profile_two.dart';
 import 'package:pranshakti/views/congratulations_screen.dart';
 import 'package:pranshakti/views/email_otp_verification.dart';
 import 'package:pranshakti/views/activity_tracker.dart';
@@ -11,7 +12,6 @@ import 'package:pranshakti/views/homepage.dart';
 import 'package:pranshakti/views/meal_schedule_page.dart';
 import 'package:pranshakti/views/notification_screen.dart';
 import 'package:pranshakti/views/profile.dart';
-import 'package:pranshakti/views/Complete_profile2.dart';
 import 'package:pranshakti/views/create_account.dart';
 import 'package:pranshakti/views/upgrade_plan_screen.dart';
 import 'package:pranshakti/views/phone_verification.dart';
@@ -29,7 +29,7 @@ class MainApp extends StatelessWidget {
     return  GetMaterialApp(
       title: 'Login page',
       debugShowCheckedModeBanner :false,
-      initialRoute: Routes.createAccount,
+      initialRoute: Routes.homePage,
       getPages: Routes.routes, 
     );
   }

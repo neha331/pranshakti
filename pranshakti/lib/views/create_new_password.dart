@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:pranshakti/controllers/create_new_password.dart';
 import 'package:pranshakti/routes/routes.dart';
-import 'package:pranshakti/views/confirm_phone_number.dart';
+import 'package:pranshakti/utils/constants.dart';
 import 'package:pranshakti/widgets/Or_divider.dart';
 import 'package:pranshakti/widgets/UserInputTextFormField.dart';
 import 'package:pranshakti/widgets/custom_button.dart';
+import 'package:pranshakti/widgets/custom_text_widget.dart';
 import 'package:pranshakti/widgets/social_media_button.dart';
 
 class CreateNewPassword extends StatelessWidget {
   CreateNewPassword({super.key});
-  final TextEditingController _userPasswordTextEditingController =
-      TextEditingController();
-    final TextEditingController _userConfirmPasswordTextEditingController =
-      TextEditingController();   
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
+  final CreateNewPasswordController _signupController = Get.put(CreateNewPasswordController());
+
+  // final TextEditingController _userPasswordTextEditingController =
+  //     TextEditingController();
+  //   final TextEditingController _userConfirmPasswordTextEditingController =
+  //     TextEditingController();   
+  // final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -36,33 +40,31 @@ class CreateNewPassword extends StatelessWidget {
                   width: mediaQuery.size.width * 0.5,
                 ),
                 const SizedBox(height: 30),
-                const Text(
-                  'Create New Password',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+                const CustomTextWidget(
+                  text:AppStrings.createNewPassword,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600, 
+                ),                
                 const SizedBox(height: 30),
                 Form(
-                  key: _formkey,
+                  key: _signupController.formkey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       UserInputTextFormField(
-                        controller: _userPasswordTextEditingController,
-                        hintText: 'Enter new password',
-                        labelText: 'Enter new password',
+                        controller: _signupController.userPasswordTextEditingController,
+                        labelText: AppStrings.enterNewPassword,
                         borderRadius: BorderRadius.circular(20.0),
-                        prefixIcon:Icons.lock,
+                        prefixIcon:Icons.lock_outline_rounded,
+                        suffixIcon: Icons.remove_red_eye_outlined,
                       ),
                       SizedBox(height:20),
                       UserInputTextFormField(
-                        controller: _userConfirmPasswordTextEditingController,
-                        hintText: 'Confirm new password',
-                        labelText:'Confirm new password',
+                        controller: _signupController.userConfirmPasswordTextEditingController,
+                        labelText: AppStrings.confirmNewPassword,
                         borderRadius: BorderRadius.circular(20.0),
-                        prefixIcon:Icons.lock,
+                        prefixIcon:Icons.lock_outline_rounded,
+                        suffixIcon: Icons.remove_red_eye_outlined,
                       ),
                     
                     ],
@@ -70,12 +72,16 @@ class CreateNewPassword extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 CustomButton(
-                  text: 'Next >>',
+                  text: AppStrings.next,
                   height: 60,
                   width: 315,
                   borderRadius: 40.0,
                   onPressed: () {
-                    Get.toNamed(Routes.confirmPhoneNumber);
+                    if (_signupController.checkPassword()) {
+                      Get.toNamed(Routes.confirmPhoneNumber);
+                     }else{
+                      Get.snackbar('Invalid Password', 'Password length should be 8-12 characters, password should have at least 1 Digit, 1 lowercase letter and 1 uppercase letter');
+                     }
                   },
                 ),
                 const SizedBox(height: 80),
@@ -83,7 +89,22 @@ class CreateNewPassword extends StatelessWidget {
                 const SizedBox(height: 50),
                 const SocialMediaButtons(),
                 const SizedBox(height: 30),
-                const Text('Already have an account? Login'),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomTextWidget(
+                      text:AppStrings.alreadyAccount,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    CustomTextWidget(
+                      text:AppStrings.login,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500, 
+                      color: Constants.colorPurple,
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 10),
                 
               ],

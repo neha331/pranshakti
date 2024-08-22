@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pranshakti/utils/constants.dart';
 
 class OrDivider extends StatelessWidget {
   const OrDivider({super.key});
@@ -13,7 +14,7 @@ class OrDivider extends StatelessWidget {
         Container(
           height: 2,
           width: mediaQuery.size.width * 0.35,
-          color: const Color.fromARGB(255, 229, 228, 228),
+          color: Constants.colorOrDivider,
         ),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.0), 
@@ -22,9 +23,12 @@ class OrDivider extends StatelessWidget {
         Container(
           height: 2,
           width: mediaQuery.size.width * 0.35,
-          color: const Color.fromARGB(255, 229, 228, 228),
+          color: Constants.colorOrDivider,
         ),
       ],
     );
   }
 }
+
+
+

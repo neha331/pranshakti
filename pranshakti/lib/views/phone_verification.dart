@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pranshakti/controllers/phone_verification_controller.dart';
 import 'package:pranshakti/routes/routes.dart';
+import 'package:pranshakti/utils/constants.dart';
 import 'package:pranshakti/views/complete_profile_one.dart';
 import 'package:pranshakti/widgets/Or_divider.dart';
 import 'package:pranshakti/widgets/UserInputTextFormField.dart';
 import 'package:pranshakti/widgets/custom_button.dart';
+import 'package:pranshakti/widgets/custom_text_widget.dart';
 import 'package:pranshakti/widgets/social_media_button.dart';
 
 class PhoneVerification extends StatelessWidget {
   PhoneVerification({super.key});
-  final TextEditingController _verifyPhoneTextEditingController =
-      TextEditingController();
-  final TextEditingController _EnterPhoneOTPTextEditingController =
-      TextEditingController();    
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-
+  
+  final PhoneVerificationController _PhoneVerificationController = Get.put(PhoneVerificationController());
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -36,34 +35,30 @@ class PhoneVerification extends StatelessWidget {
                   width: mediaQuery.size.width * 0.5,
                 ),
                 const SizedBox(height: 10),
-                const Text(
-                  'Verify phone number',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600,
-                  ),
+                const CustomTextWidget(
+                  text: AppStrings.verifyPhoneNumber,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 24,
                 ),
                 const SizedBox(height: 30),
                 Form(
-                  key: _formkey,
+                  key: _PhoneVerificationController.formkey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       UserInputTextFormField(
-                        controller: _verifyPhoneTextEditingController,
-                        hintText: 'Enter phone number without country code',
-                        labelText: 'Enter phone number without country code',
+                        controller: _PhoneVerificationController.verifyPhoneTextEditingController,
+                        labelText: AppStrings.enterPhoneNumber,
                         borderRadius: BorderRadius.circular(20.0),
-                        prefixIcon:Icons.phone,
+                        prefixIcon:Icons.phone_outlined,
                       ),
                       const SizedBox(height: 30),
            
                       UserInputTextFormField(
-                        controller: _EnterPhoneOTPTextEditingController,
-                        hintText: 'Enter OTP sent on your phone',
-                        labelText: 'Enter OTP sent on your phone',
+                        controller: _PhoneVerificationController.EnterPhoneOTPTextEditingController,
+                        labelText: AppStrings.enterPhoneOtp,
                         borderRadius: BorderRadius.circular(20.0),
-                        prefixIcon:Icons.lock,
+                        prefixIcon:Icons.lock_open_rounded,
                       ),
                     ],
                   ),
@@ -72,23 +67,27 @@ class PhoneVerification extends StatelessWidget {
                 Align(
                   alignment: Alignment.topRight,
                   child: CustomButton(
-                    text: 'Resend OTP',
+                    text: AppStrings.reSendOtp,
                     height: 50,
                     width: 120,
                     borderRadius: 40.0,
                     onPressed: () {
-                      print('Send OTP button pressed');
+                      if (_PhoneVerificationController.checkPhone()) {
+                      Get.snackbar('Otp Sent','on your phone number');
+                     }else{
+                      Get.snackbar('Invalid Phone', 'Please enter a valid Phone number');
+                     }
                     },
                   ),
                 ),
                 const SizedBox(height: 20),
                 CustomButton(
-                  text: 'Next >',
+                  text: AppStrings.next,
                   height: 59,
                   width: 315,
                   borderRadius: 40.0,
-                  onPressed: () {
-                    Get.toNamed(Routes.completeProfileOne);
+                  onPressed: (){
+                    
                   },
                 ),
                 const SizedBox(height: 20),
@@ -96,7 +95,22 @@ class PhoneVerification extends StatelessWidget {
                 const SizedBox(height: 30),
                 const SocialMediaButtons(),
                 const SizedBox(height: 30),
-                const Text('Already have an account? Login'),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomTextWidget(
+                      text:AppStrings.alreadyAccount,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    CustomTextWidget(
+                      text:AppStrings.login,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500, 
+                      color: Constants.colorPurple,
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 10),
                 
               ],

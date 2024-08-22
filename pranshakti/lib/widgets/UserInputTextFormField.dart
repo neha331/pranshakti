@@ -7,7 +7,10 @@ class UserInputTextFormField extends StatelessWidget {
   final String labelText;
   final bool filled;
   final TextInputType keyboardType;
-  final IconData prefixIcon;
+  final IconData? prefixIcon;
+  final Color? prefixIconColor;
+  final IconData? suffixIcon;
+  final Color? suffixIconColor;
   final Color? fillColor;
   final Color color;
   final BorderRadius? borderRadius;
@@ -19,7 +22,10 @@ class UserInputTextFormField extends StatelessWidget {
     required this.labelText,
     this.filled = true,
     this.keyboardType = TextInputType.text,
-    this.prefixIcon = Icons.email,
+    this.prefixIcon,
+    this.prefixIconColor= const Color.fromRGBO(123, 111, 114, 1),
+    this.suffixIcon,
+    this.suffixIconColor=const Color.fromRGBO(123, 111, 114, 1),
     this.fillColor = const Color.fromRGBO(247, 248, 248, 1),
     this.color = const Color.fromARGB(255, 239, 239, 239),
     this.borderRadius,
@@ -32,39 +38,51 @@ class UserInputTextFormField extends StatelessWidget {
     return Container(
       height: 60,
       width: mediaQuery.size.width * 0.9,
+      
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
             spreadRadius: 0,
-            blurRadius: 4,
-            offset: const Offset(0, 4),
+            blurRadius: 8,
+            offset: const Offset(0, 3),
           ),
         ],
       ),
-      child: TextFormField(
-        controller: controller,
-        decoration: InputDecoration(
-          filled: filled,
-          prefixIcon: Icon(prefixIcon),
-          fillColor: fillColor,
-          hintText: hintText,
-          label: Text(
-            labelText,
-            style: GoogleFonts.poppins(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: const Color.fromRGBO(173, 164, 165, 1),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(15),
+        child: TextFormField(
+          controller: controller,
+          decoration: InputDecoration(
+            filled: filled,
+            prefixIcon: Icon(
+              prefixIcon,
+              color:prefixIconColor,
+            ),
+            suffixIcon: Icon(
+             suffixIcon,
+             color:suffixIconColor, 
+            ),
+            fillColor: fillColor,
+            hintText: hintText,
+            label: Text(
+              labelText,
+              style: GoogleFonts.poppins(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: const Color.fromRGBO(173, 164, 165, 1),
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: borderRadius!,
+              borderSide: BorderSide(
+                color: color,
+              ),
             ),
           ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: borderRadius!,
-            borderSide: BorderSide(
-              color: color,
-            ),
-          ),
+          keyboardType: keyboardType,
         ),
-        keyboardType: keyboardType,
       ),
     );
   }
