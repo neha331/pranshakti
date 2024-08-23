@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pranshakti/utils/constants.dart';
 import 'package:pranshakti/views/profile.dart';
+import 'package:pranshakti/widgets/custom_text_widget.dart';
 import 'package:pranshakti/widgets/homepage/custom_bottom_navigation_bar.dart';
 import 'package:pranshakti/widgets/workout_tracker/line_chart.dart';
 
@@ -9,13 +11,14 @@ class ActivityTrackerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor:Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: const Text(
-          'Activity Tracker',
-          style: TextStyle(color: Colors.black),
+        title:CustomTextWidget(
+                  text:AppStrings.activityTrackerstr,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700, 
         ),
         centerTitle: true,
         leading: IconButton(
@@ -47,14 +50,14 @@ class ActivityTrackerPage extends StatelessWidget {
                       height: 139,
                       width: 315,
                       decoration: BoxDecoration(
-                        color: (Color.fromRGBO(157, 206, 255, 1)),
+                        //color: (Color.fromRGBO(157, 206, 255, 1)),
                         borderRadius: BorderRadius.circular(10),
-                        //  gradient: RadialGradient(
-                        //   colors: [
-                        //     Color.fromRGBO(146, 163, 253, 1),
-                        //     Color.fromRGBO(157, 206, 255, 1),
-                        //   ]
-                        //   )
+                         gradient: LinearGradient(
+                          colors: [
+                            Color.fromRGBO(146, 163, 253, 1),
+                            Color.fromRGBO(157, 206, 255, 1),
+                          ]
+                          )
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -62,7 +65,11 @@ class ActivityTrackerPage extends StatelessWidget {
                         children: [
                           const Row(
                             children: [
-                              Text('Todays Target'),
+                              const CustomTextWidget(
+                  text: AppStrings.todaysTarget,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
+                ),
                               Spacer(flex: 1),
                               Icon(Icons.add_circle, color: Colors.blue),
                             ],
@@ -87,7 +94,11 @@ class ActivityTrackerPage extends StatelessWidget {
                                       children: [
                                         Image.asset("assets/images/glass.png"),
                                         SizedBox(width: 8),
-                                        Text('2400'),
+                                        const CustomTextWidget(
+                  text: '8L',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 24,
+                ),
                                       ],
                                     ),
                                   ],
@@ -110,11 +121,19 @@ class ActivityTrackerPage extends StatelessWidget {
                                       children: [
                                         Image.asset("assets/images/boots.png"),
                                        const  SizedBox(width: 8),
-                                        const Text('2400'),
+                                        const CustomTextWidget(
+                  text: '2400',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 24,
+                ),
                                       ],
                                     ),
                                     const SizedBox(height: 8),
-                                    const Text('Foot Steps'),
+                                    const CustomTextWidget(
+                                            text:AppStrings.footSteps,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w400, 
+                                    ),
                                   ],
                                 ),
                               ),
@@ -127,13 +146,12 @@ class ActivityTrackerPage extends StatelessWidget {
                   ],
                 ),
         
-                const Text(
-                  'Weight Progress',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18,
-                  ),
-                ),
+                
+                const CustomTextWidget(
+                                            text:AppStrings.weightProgress,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600, 
+                                    ),
         
                 // Weight Progress Graph (Placeholder)
                 Container(
@@ -146,12 +164,11 @@ class ActivityTrackerPage extends StatelessWidget {
                 const SizedBox(height: 16),
         
                 // Latest Activity Section
-                const Text(
-                  'Latest Activity',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18,
-                  ),
+                
+                const CustomTextWidget(
+                  text: AppStrings.latestActivity,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 18,
                 ),
                 const SizedBox(height: 8),
                 Card(

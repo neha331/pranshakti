@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pranshakti/utils/constants.dart';
 import 'package:pranshakti/views/upgrade_plan_screen.dart';
+import 'package:pranshakti/widgets/custom_text_widget.dart';
 import 'package:pranshakti/widgets/homepage/custom_bottom_navigation_bar.dart';
 
 class Profile extends StatelessWidget {
@@ -40,33 +42,36 @@ class Profile extends StatelessWidget {
                   const SizedBox(width: 10),
                   Column(
                     children: [
-                      const Text(
-                        'Stefani Wong',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      const CustomTextWidget(
+                        text: 'Stefani Wong',
+                        fontWeight: FontWeight.w500,
+                        fontSize: 24,
                       ),
                       SizedBox(height: 10),
-                      Text(
-                        'Lose a Fat Program',
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                        ),
+                      CustomTextWidget(
+                        text: AppStrings.looseFat,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 24,
+                        color: Colors.grey[600],
                       ),
                     ],
                   ),
                   const Spacer(flex: 1),
                   ElevatedButton(
                     onPressed: () {},
-                    child: Text('Edit'),
+                    child: CustomTextWidget(
+                      text: AppStrings.editButtonStr,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 24,
+                      color: Colors.white,
+                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blueAccent,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
                     ),
                   ),
                 ],
@@ -140,7 +145,6 @@ class Profile extends StatelessWidget {
                       _buildListTile('Settings', Icons.settings),
                     ],
                   )),
-              
             ],
           ),
         ),

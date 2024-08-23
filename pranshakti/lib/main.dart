@@ -29,7 +29,7 @@ class MainApp extends StatelessWidget {
     return  GetMaterialApp(
       title: 'Login page',
       debugShowCheckedModeBanner :false,
-      initialRoute: Routes.homePage,
+      initialRoute: Routes.createAccount,
       getPages: Routes.routes, 
     );
   }

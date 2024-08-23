@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pranshakti/utils/constants.dart';
 import 'package:pranshakti/views/activity_tracker.dart';
+import 'package:pranshakti/widgets/custom_text_widget.dart';
 import 'package:pranshakti/widgets/homepage/custom_bottom_navigation_bar.dart';
 import 'package:pranshakti/widgets/workout_tracker/GridViewWidget.dart';
 
@@ -13,8 +15,6 @@ class WorkoutTracker extends StatelessWidget {
     'assets/images/ABWorkout.png',
     'assets/images/workout.png',
     'assets/images/workout.png',
-    
-    
   ];
   final List<String> workoutNames = [
     'AB Workout',
@@ -23,15 +23,17 @@ class WorkoutTracker extends StatelessWidget {
     'AB Workout',
     'AB Workout',
     'AB Workout',
-  
   ];
   @override
   Widget build(BuildContext context) {
-    
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Welcome Back'),
+          title: const CustomTextWidget(
+                text:AppStrings.welcomeStr,
+                fontSize: 24,
+                fontWeight: FontWeight.w600, 
+          ),
         ),
         body: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -47,17 +49,14 @@ class WorkoutTracker extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-              ),
-             Align(
+          ),
+          const Align(
                 alignment: Alignment.topLeft,
-                child:Text(
-                 "Trackers",
-                 style: GoogleFonts.poppins(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: Colors.black,
-              ),
-            ),
+                child:CustomTextWidget(
+                  text:AppStrings.createNewPassword,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500, 
+                ),
               ),            
               Expanded(
                 child: GridViewWidget(
@@ -70,27 +69,21 @@ class WorkoutTracker extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
-                    //  Text("hi"),
-                
-                      //Text("hi"),
                       Container(
                         height:150,
                         width:150,
                         child: GestureDetector(
                         child: Image.asset(
                            workoutImages[index],
-                          //  height:150,
-                          //  width:150,
                         ),
                         ),
                       ),
                       Text(workoutNames[index]),
                   ]
                   );
-                           },
-                          ),
-              ),
-           
+              },
+            ),
+         ),
           ]
           ),
         ),
